@@ -1,0 +1,40 @@
+[workspace]
+members = ["sha1_cracker", "tricoder"]
+
+[workspace.package]
+name = "toolkit"
+version = "0.1.0"
+edition = "2021"
+authors = ["Dylan Wright"]
+rust-version = "1.75.0"
+
+[workspace.registeries.crates-io]
+protocol = "sparse"
+
+[workspace.dependencies]
+anyhow = "1"
+futures = "0.3"
+hex = "0.4.3"
+reqwest = { version = "0.11", features = ["json", "blocking", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+sha-1 = "0.10.1"
+thiserror = "1"
+tokio = { version = "1", features = ["full"] }
+tokio-stream = "0.1"
+trust-dns-resolver = "0.21"
+
+[workspace.build]
+target = ["x86_64-unknown-linux-gnu", "x86_64-pc-windows-gnu"]
+
+[profile.dev]
+opt-level = 1
+
+[profile.test]
+opt-level = 1
+
+[profile.release]
+strip = true      # Automagically strip symbols from the library
+opt-level = "z"   # Highest optimisation
+lto = true        # Enable link time optimisation
+codegen-units = 1 # Maximise size reduction optimisation
+panic = 'abort'   # Aborts on panic

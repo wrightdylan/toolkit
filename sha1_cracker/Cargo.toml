@@ -1,0 +1,27 @@
+[package]
+name = "sha1_cracker"
+version = "0.1.0"
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[registeries.crates-io]
+protocol.workspace = true
+
+
+[dependencies]
+hex.workspace = true
+sha-1.workspace = true
+
+[profile.dev]
+opt-level = 1
+
+[profile.test]
+opt-level = 1
+
+[profile.release]
+strip = true      # Automagically strip symbols from the library
+opt-level = "z"   # Highest optimisation
+lto = true        # Enable link time optimisation
+codegen-units = 1 # Maximise size reduction optimisation
+panic = 'abort'   # Aborts on panic
