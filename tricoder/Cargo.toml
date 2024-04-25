@@ -10,13 +10,19 @@ protocol.workspace = true
 
 [dependencies]
 anyhow.workspace = true
+async-trait.workspace = true
+clap.workspace = true
+env_logger.workspace = true
 futures.workspace = true
+log.workspace = true
+regex.workspace = true
 reqwest.workspace = true
 serde.workspace = true
 thiserror.workspace = true
 tokio.workspace = true
 tokio-stream.workspace = true
 trust-dns-resolver.workspace = true
+url.workspace = true
 
 [profile.dev]
 opt-level = 1
