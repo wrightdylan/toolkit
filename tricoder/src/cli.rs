@@ -120,27 +120,6 @@ pub fn scan(target: &str) -> Result<(), Error> {
             }
         }
 
-        // stream::iter(subdomains.into_iter())
-        //     .map(|domain| {
-        //         domain
-        //             .open_ports
-        //             .iter()
-        //             .map(|port| format!("http://{}:{}", &domain.domain, port.port))
-        //             .collect::<Vec<String>>()
-        //     })
-        //     .map(|targets| {
-        //         stream::iter(targets.into_iter().map(|target| {
-        //             let http_modules = modules::all_http_modules();
-        //             return (http_modules, target);
-        //         }))
-        //     })
-        //     .flatten()
-        //     .map(|(modules, target)| {
-        //         stream::iter(modules.into_iter().map(move |module| {
-        //             return (module, target.clone());
-        //         }))
-        //     })
-        //     .flatten()
         stream::iter(targets.into_iter())
             .for_each_concurrent(vulnerabilities_conccurency, |(module, target)| {
                 let http_client = http_client.clone();

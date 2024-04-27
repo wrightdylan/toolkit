@@ -1,5 +1,5 @@
 [workspace]
-members = ["sha1_cracker", "tricoder"]
+members = ["crawler", "sha1_cracker", "tricoder"]
 
 [workspace.package]
 name = "toolkit"
@@ -14,14 +14,17 @@ protocol = "sparse"
 [workspace.dependencies]
 anyhow = "1"
 async-trait = "0.1"
-clap = { version = "3.1", features = ["cargo"] }
+clap = { version = "3.2", features = ["cargo"] }
 env_logger = "0.11.3"
+fantoccini = { version = "0.19", default-features = false, features = ["rustls-tls"] }
 futures = "0.3"
 hex = "0.4.3"
 log = "0.4"
 regex = "1"
-reqwest = { version = "0.11", features = ["json", "blocking", "rustls-tls"] }
+reqwest = { version = "0.12.4", features = ["json", "blocking", "rustls-tls"] }
+select = "0.6.0"
 serde = { version = "1", features = ["derive"] }
+serde_json = "1.0"
 sha-1 = "0.10.1"
 thiserror = "1"
 tokio = { version = "1", features = ["full"] }
